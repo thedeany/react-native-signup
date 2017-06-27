@@ -6,7 +6,7 @@ import EventList from './EventList';
 
 const Home = () => (
   <View>
-    <EventList />
+    <EventList style={{ flex: 1 }}/>
   </View>
 );
 
