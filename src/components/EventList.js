@@ -4,6 +4,7 @@ import axios from 'axios';
 
 import Api from './Api';
 import EventDetail from './EventDetail';
+import { Spinner } from './common';
 
 class EventList extends Component {
 	state = {
@@ -30,7 +31,7 @@ class EventList extends Component {
 
 	render() {
 		const content = this.state.loading
-			? <Text>Loading...</Text>
+			? <Spinner size="large" />
 			: this.renderEvents();
 
 		return (
