@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, TouchableOpacity } from 'react-native';
 import moment from 'moment';
 
 import Card from './Card';
@@ -9,23 +9,25 @@ const EventDetail = (props) => {
 	const { event } = props;
 	const { title, location, date, description, image } = styles;
 	return (
-		<Card>
-			<CardSection>
-				<View>
-					<Text style={title}>{event.Title}</Text>
-					<Text style={location}>{event.LocationName} - {event.SpaceName}</Text>
-					<Text style={date}>{moment(event.EventStart).format('MMMM Do YYYY - h:mm a')}</Text>
-					{event.Image.length > 0
-						? <Image style={image} source={{ uri: event.Image }} />
-						: null
-					}
-					{event.Description.length > 0
-						? <Text style={description}>{event.Description}</Text>
-						: null
-					}
-				</View>
-			</CardSection>
-		</Card>
+		<TouchableOpacity>
+			<Card>
+				<CardSection>
+					<View>
+						<Text style={title}>{event.Title}</Text>
+						<Text style={location}>{event.LocationName} - {event.SpaceName}</Text>
+						<Text style={date}>{moment(event.EventStart).format('MMMM Do YYYY - h:mm a')}</Text>
+						{event.Image.length > 0
+							? <Image style={image} source={{ uri: event.Image }} />
+							: null
+						}
+						{event.Description.length > 0
+							? <Text style={description}>{event.Description}</Text>
+							: null
+						}
+					</View>
+				</CardSection>
+			</Card>
+		</TouchableOpacity>
 	);
 };
 
