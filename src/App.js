@@ -5,7 +5,7 @@ import Router from './Router';
 class App extends Component {
   render() {
     return (
-      <View>
+      <View style={{ flex: 1 }}>
         <Router />
       </View>
     );
