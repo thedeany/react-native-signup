@@ -33,4 +33,10 @@ class EventList extends Component {
 	}
 }
 
-export default EventList;
+const mapStateToProps = (state) => {
+	const { events, loading, config } = state.events;
+
+	return { events, loading, config};
+}
+
+export default connect(mapStateToProps, { eventsFetch })(EventList);
