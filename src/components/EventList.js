@@ -1,67 +1,29 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
+import { connect } from 'react-redux';
 import axios from 'axios';
+
+import { eventsFetch } from '../actions';
 
 import Api from './Api';
 import EventDetail from './EventDetail';
 import { Spinner } from './common';
 
 class EventList extends Component {
-	state = {
-		events: [],
-		loading: true,
-		config: Api.config,
-	}
-
 	componentWillMount() {
-		this.getEventData();
-	}
-
-	createUrl() {
-		const {
-			ongoingEvents,
-			spacesReservations,
-			onlyEventsWithRegistration,
-			onlyFeaturedEvents,
-			ageGroups,
-			eventTypes
-		} = this.state.config;
-
-		let ag, et;
-
-		if (ageGroups.length > 0) {
-			console.log(ageGroups.map(group => `ageGroups=${group}`).join('&') + '&')
-			ag = ageGroups.map(group => `ageGroups=${group}`).join('&') + '&';
-		}
-
-		if (eventTypes.length > 0) {
-			et = eventTypes.map(type => `eventsTypes=${type}`).join('&') + '&';
-		}
-
-		return `https://demozonepublic.evanced.info/api/signup/eventlist?${ag}${et}isOngoingVisible=${ongoingEvents}&isSpacesReservationVisible=${spacesReservations}&onlyRegistrationEnabled=${onlyEventsWithRegistration}&onlyFeaturedEvents=${onlyFeaturedEvents}`
-	}
-
-	getEventData() {
-		const url = this.createUrl();
-
-		axios.get(url)
-			.then(response => {
-				console.log(response);
-				this.setState({
-					events: response.data,
-					loading: false
-				});
-			});
+		console.log(this.props);
+		this.props.eventsFetch(this.props.config);
 	}
 
 	renderEvents() {
-		return this.state.events.map(event =>
+		return this.props.events.map(event =>
 			<EventDetail key={event.EventId} event={event} />
 		);
 	}
 
 	render() {
-		const content = this.state.loading
+		console.log(this.props)
+		const content = this.props.loading
 			? <Spinner size="large" />
 			: this.renderEvents();
 
