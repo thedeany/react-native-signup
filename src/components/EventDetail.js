@@ -7,6 +7,7 @@ import CardSection from './CardSection';
 
 const EventDetail = (props) => {
 	const { event } = props;
+	console.log(event.Image);
 	const { title, location, date, description, image } = styles;
 	return (
 		<TouchableOpacity>
@@ -16,7 +17,7 @@ const EventDetail = (props) => {
 						<Text style={title}>{event.Title}</Text>
 						<Text style={location}>{event.LocationName} - {event.SpaceName}</Text>
 						<Text style={date}>{moment(event.EventStart).format('MMMM Do YYYY - h:mm a')}</Text>
-						{event.Image.length > 0
+						{event.Image.length > 0 && event.Image.includes('https://') // Apple only allows external assets via HTTPS
 							? <Image style={image} source={{ uri: event.Image }} />
 							: null
 						}
