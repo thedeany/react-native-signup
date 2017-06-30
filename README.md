@@ -1,0 +1,1 @@
+This is the first React Native project I created during/after I complete Stephen Grider's ["Complete React Native and Redux" course](https://www.udemy.com/the-complete-react-native-and-redux-course/).
