@@ -4,6 +4,8 @@ This is the first React Native project I created during/after I completed Stephe
 ### Project
 The goal of the app is to consume an API feed from Demco Software's [SignUp](http://demcosoftware.com/products/signup/) event management software. I have plans to complete the "Filter" section of the app to allow real-time customization of the events which are shown.
 
+The app is currently only built for and tested on the iOS simulator.
+
 ### Usage
 1. Clone the repo `git clone https://github.com/thedeany/react-native-signup.git`
 2. `cd react-native-signup`
