@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View } from 'react-native';
-import { CardSection } from './common';
 import { connect } from 'react-redux';
 import { updateFilters } from '../actions';
+import { CardSection, Input } from './common';
 
 class FilterView extends Component {
   // TODO create form of filters which populate from state.config
@@ -10,7 +10,12 @@ class FilterView extends Component {
   render() {
     return (
       <CardSection>
-        <Text>Filtering</Text>
+        <Input
+          label="Age Groups"
+          placeholder="1,2,3"
+          value={this.props.config.ageGroups}
+          onChangeText={value => this.props.updateFilters({ prop: 'ageGroups', value })}
+        />
       </CardSection>
     );
   }
