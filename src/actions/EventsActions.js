@@ -1,6 +1,7 @@
 import axios from 'axios';
 import {
-  EVENTS_FETCH_SUCCESS
+  EVENTS_FETCH_SUCCESS,
+  FILTER_UPDATE
 } from './types';
 
 const createUrl = (config) => {
@@ -38,3 +39,12 @@ export const eventsFetch = (config) => {
   };
   // return { type: EVENTS_FETCH_SUCCESS, payload: ['test', 'test2'] };
 };
+
+export const updateFilters = ({ prop, value }) => {
+  const array = value.split(',');
+  console.log(array);
+  return {
+    type: FILTER_UPDATE,
+    payload: { prop, array }
+  };
+}

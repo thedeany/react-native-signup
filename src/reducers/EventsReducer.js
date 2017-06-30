@@ -1,5 +1,6 @@
 import {
-  EVENTS_FETCH_SUCCESS
+  EVENTS_FETCH_SUCCESS,
+  FILTER_UPDATE
 } from '../actions/types';
 import Api from '../components/Api';
 
@@ -14,6 +15,9 @@ export default (state = INITIAL_STATE, action) => {
     case EVENTS_FETCH_SUCCESS:
       console.log(action);
       return { ...state, events: action.payload, loading: false };
+    case FILTER_UPDATE:
+      console.log(action);
+      return { ...state, config: { ...state.config, [action.payload.prop]: action.payload.value }};
     default:
       return state;
   }
